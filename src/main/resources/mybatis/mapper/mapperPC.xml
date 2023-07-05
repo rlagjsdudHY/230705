@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.proj.board.dao.PCDao">
+
+	<insert id="mtdJoin">
+		insert into memList
+		(uid,upw,uname,phone,address,email)
+		values
+		(#{item1},#{item2},#{item3},#{item4},#{item5},#{item6})
+	</insert>
+
+	<!-- 로그인 -->
+	<select id="loginProc" resultType="int">
+		select count(*) from memList
+		where uid = #{param1} and upw = #{param2}
+	</select>
+
+	<!-- 마이페이지 <select id="mypage" resultType="com.proj.board.dto.PCDto"> select 
+		uid uName phone address Email from memList where num </select> -->
+
+	<!-- 회원 탈퇴 -->
+	<!-- <delete id="mtdMemberDel"> delete from memList where num=#{param1} 
+		</delete> -->
+
+	<!-- 회원목록 조회 -->
+	<!-- <select id="mtdMemberList" resultType="com.proj.board.dto.PCDto"> select 
+		* from memList where num = #{param1} </select> -->
+
+	<!-- 회원탈퇴 -->
+	<delete id="memDelete" parameterType="map">
+		delete from memList where
+		uid = #{param1} and upw = #{param2}
+	</delete>
+
+	<!-- 회원정보보기 마이페이지 -->
+	<select id="mypageInfo" resultType="com.proj.board.dto.PCDto">
+		select num,uid, uname, phone,
+		address,
+		Email from memList where uid = #{param1} order by num
+	</select>
+
+	<!-- 회원정보수정 페이지 진입 -->
+	<select id="memModifyView" resultType="com.proj.board.dto.PCDto">
+		select * from memList
+		where uid = #{param1}
+	</select>
+
+	<!-- 회원정보수정 제출 로직 -->
+	<update id="memModifyProcProc">
+		UPDATE memList
+		SET uname = #{item1},
+		phone = #{item2},
+		address = #{item3},
+		email = #{item4}
+		WHERE uid = #{item5}
+	</update>
+	<!-- 어드민 로그인 -->
+	<select id="aloginProc" resultType="int">
+		select count(*) from admin
+		where uid = #{param1} and upw = #{param2}
+	</select>
+	<!-- 어드민 이름값 반환 -->
+	<select id="uName" resultType="String">
+
+		select uName from admin where uid
+		= #{param}
+
+	</select>
+
+	<!-- 제품 리스트 출력 -->
+	<select id="mtdPcList"
+		resultType="com.proj.board.dto.PCDetailDto">
+		select * from goodsDetail order by pcNum desc
+	</select>
+
+	<!-- 제품 상세내용 보기 -->
+	<select id="mtdPcView"
+		resultType="com.proj.board.dto.PCDetailDto">
+		select * from goodsDetail where pcNum=#{param1}
+	</select>
+
+	<!-- 비밀번호 변경 PWmod.jsp -->
+	<select id="pwMod" resultType="com.proj.board.dto.PCDto">
+		select * from memList where
+		uid=#{param1}
+	</select>
+
+	<!-- 비밀번호 수정 실행 -->
+	<update id="pwModProc">
+		update memList set upw = #{item1} where uid =
+		#{item2}
+	</update>
+
+	<!-- 제품 옵션 리스트 출력 -->
+	<select id="mtdPcOptionList"
+		resultType="com.proj.board.dto.PCDetailDto">
+		select * from monitorOp
+		inner join pcCpuOp on monitorOpNum =
+		pcCpuOpNum
+		inner join cpuCoolerOp on monitorOpNum = cpuCoolerOpNum
+		inner join pcMemoryOp on monitorOpNum = pcMemoryOpNum
+		inner join
+		mainboardOp on monitorOpNum = mainboardOpNum
+		inner join ssdOp on
+		monitorOpNum = ssdOpNum
+		inner join hddOp on monitorOpNum = hddOpNum
+		inner join graphicOp on monitorOpNum = graphicOpNum
+		inner join cdOp on
+		monitorOpNum = cdOpNum
+		inner join soundOp on monitorOpNum = soundOpNum
+		inner join networkCardOp on monitorOpNum = networkCardOpNum
+		inner join
+		pcCaseOp on monitorOpNum = pcCaseOpNum
+		inner join powerOp on
+		monitorOpNum = powerOpNum
+		inner join windowsOp on monitorOpNum =
+		windowsOpNum
+		inner join officeOp on monitorOpNum = officeOpNum
+		inner
+		join freeGiftOp on monitorOpNum = freeGiftOpNum
+	</select>
+
+	<!-- QNA게시글수정 이름반환 -->
+	<select id="QNAmodUname" resultType="String">
+
+		select uname from memList
+		where uid = #{param1}
+	</select>
+
+	<!-- 아이디 찾기 -->
+	<select id="findIDProc" resultType="int">
+		select count(*) from memList
+		where uname = #{param1} and phone = #{param2}
+	</select>
+
+	<!-- 아이디 찾기 성공 -->
+	<select id="mtdFindIDSucc" resultType="com.proj.board.dto.PCDto">
+		select * from memList
+		where uname=#{param1}
+	</select>
+
+</mapper>

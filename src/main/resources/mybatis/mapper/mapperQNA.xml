@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+ <mapper namespace="com.proj.board.dao.QNADao">
+ 
+ 	<select id="QNAList" resultType="com.proj.board.dto.QNADto"> <!-- QNA 게시글 불러오기 -->
+ 		select * from QNABoard order by num desc
+ 		LIMIT #{param1}, #{param2}
+ 	</select>
+ 	
+ 	<select id="getTotalQNACount" resultType="int"> <!-- QNA 총 게시글 수 조회 -->
+ 		select count(*) from QNABoard order by num desc
+ 		
+ 	</select>
+ 	
+ 	<insert id="QNAWrite">  <!--  QNA 게시글 등록 -->
+ 		insert into QNABoard (title,content,filename,uid,writer) values (#{param1},#{param2},#{param3},#{param4},#{param5})
+ 	</insert>
+ 	
+ 	<select id="QNAresult" resultType="com.proj.board.dto.QNADto"> <!-- QNA 게시글 상세보기 -->
+ 		select * from QNABoard where num = #{param1}
+ 	</select>
+ 	
+ 	<insert id="comment"> <!-- 코멘트입력 -->
+ 		insert into CommentBoard (bno,comment,uname) values (#{param1},#{param2},#{param3})
+ 	</insert>
+ 	
+ 	<select id="Commentlist" resultType="com.proj.board.dto.CommentDto"> <!-- 게시글 원본 번호 넣고 댓글리스트 조회 -->
+ 		select * from CommentBoard where bno = ${param1}
+ 	</select>
+ 	
+ 	<select id="writerFind" resultType="String">  <!-- uid값 반환 -->
+ 		select uid from QNABoard where num = #{param1} 
+ 	</select>
+ 	
+ 	<delete id="QNAdel"> <!-- QNA 글 삭제 -->
+ 		delete from QNABoard where num = ${param1}
+ 	</delete>
+ 	
+ 	<select id="QNAmod" resultType="com.proj.board.dto.QNADto"> <!-- QNA 수정 페이지 -->
+ 		select * from QNABoard where num = #{param1}
+ 	</select>
+ 	
+ 	<update id="QNAmodProc"> <!--  QNA글 수정하기 -->
+  UPDATE QNABoard
+    SET title = #{param1},
+        content = #{param2},
+        filename = #{param3},
+        uid = #{param4},
+        writer = #{param5}
+    WHERE num = #{param6}
+ 	</update>
+ 	
+ 	
+ 	<update id="QNAreadCnt">  <!-- 조회수 증가 -->
+ 		update QNABoard set readcnt = readcnt +1 where num
+		= #{param1}
+ 	</update>
+ 	
+ </mapper>

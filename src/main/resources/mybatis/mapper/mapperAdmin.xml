@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.proj.board.dao.PCDao">
+
+	<!-- 회원목록관리 -->
+	<select id="memList" resultType="com.proj.board.dto.PCDto">
+		select * from memList order by num desc
+	</select>
+	
+	<!-- 회원목록 개별삭제(어드민 페이지) -->
+	<delete id="memDel">
+		delete from memList 
+		where num=#{param1}
+	</delete>
+	
+	<!-- 회원 수정페이지(어드민) -->
+	<select id="AdMemModi" resultType="com.proj.board.dto.PCDto">
+		select * from memList
+		where num = #{param1}
+	</select>
+	
+ 	<!-- 회원 수정(어드민) -->
+	<update id="AdMemModiProc" parameterType="java.util.HashMap">
+		update memList set 
+		uname = #{item1},
+		phone = #{item2},
+		address = #{item3},
+		email = #{item4}
+		where num = #{item5}
+	</update>
+	
+</mapper>

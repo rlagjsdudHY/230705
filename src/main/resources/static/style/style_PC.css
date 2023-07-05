@@ -1,0 +1,61 @@
+@charset "UTF-8";
+
+@import url("style_Reset.css");
+
+/* 제품 상세보기 페이지 시작 (PCView/pcViewPage.jsp) */
+div#wrapView {
+    width: 1000px;
+    padding: 30px 10px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    margin: 10px auto;
+}
+main#main { /* border: 1px solid #000; */ }
+#main div { margin: 0 auto; }
+div#GoodsImage { width: 50%; }
+div#goodsOption { /* border: 1px solid #000; */ width: 50%; text-align: center; }
+#goodsOption h1 { margin: 10px 20px 20px; text-align: center; }
+#goodsOption hr { border: 1px solid #000; }
+#goodsOption div.opArea { padding: 2px; padding-top: 10px; font-size: 12px; }
+#goodsOption div.opArea span {  font-weight: bold; flex: 1; text-align: left; }
+#goodsOption div.opArea div#selArea { width: 220px; margin-right: 180px; }
+#goodsOption div.opArea div#selArea select { width: 370px; font-size: 12px;  }
+div#GoodsImage { /* border: 1px solid #000; */ padding: 20px 0; text-align: center; }
+div#GoodsImage img { /* border: 1px solid #000; */ width: 400px; height: 400px; margin: auto 0; }
+div#GoodsImage img:nth-child(2) { height: 130px; margin-top: 80px; }
+div#plusBuyArea { margin: 20px 0; margin-top: 10px; }
+div#plusBuyArea span:last-child { margin-right: 180px; }
+div#orderArea div#orderCnt { margin-right: 300px; }
+#goodsOption table { /* border: 1px solid #000; */ width: 380px; }
+#goodsOption table tbody tr th { font-size: 12px; text-align: left; }
+#goodsOption table tbody tr td { font-size: 12px; text-align: left; padding-left: 50px; }
+#goodsOption table tbody tr td span { font-weight: bold; }
+div#btnArea { padding: 20px 0; }
+div#btnArea span { border: 1px solid #000; font-size: 18px; font-weight: bold;
+					padding: 10px 14px; }
+div#btnArea span:hover { cursor: pointer; background-color: #aaa; }
+div#ASArea { /* border: 1px solid #000; */ width: 100%; }
+#ASArea div { padding: 20px 10px; }
+#ASArea div * { /* border: 1px solid #000; */ }
+#ASArea div span:nth-child(1) { width: 100px; }
+#ASArea div span:nth-child(2) { font-weight: bold; flex: 1; font-size: 22px; }
+#ASArea div span:nth-child(3) { border: 1px solid #000; width: 100px; margin: -10px 0; line-height: 45px; }
+#ASArea div span:nth-child(3):hover { cursor: pointer; font-weight: bold; background-color: #aaa; }
+#ASArea div span:nth-child(4) { border: 1px solid #000; width: 100px;  margin: -10px 0; line-height: 45px; }
+#ASArea div span:nth-child(4):hover { cursor: pointer; font-weight: bold; background-color: #aaa; }
+#ASArea div#b span:nth-child(3) { width: 200px; margin: -10px 0; line-height: 45px; }
+#ASArea div#b span:nth-child(3):hover { cursor: pointer; font-weight: bold; background-color: #aaa; }
+footer#footer { text-align: center; }
+/* 제품 상세보기 페이지 끝 (PCView/pcViewPage.jsp) */
+
+/* 아이디 찾기 성공 페이지 시작 (login/findIDSuc.jsp) */
+#main h2 { margin: 10px; padding-bottom: 30px; }
+#main div#IDList { width: 400px; margin: 10px auto; }
+#main hr{ margin: 10px auto; width: 400px; }
+#IDList span:nth-child(1) { width: 100px; font-weight: bold; }
+#IDList span:nth-child(2) { width: 100px; margin-left: -24px; }
+#IDList span:nth-child(3) { width: 100px; font-weight: bold; }
+#IDList span:nth-child(4) { width: 100px; margin-left: -20px; }
+#btnArea button { font-weight: bold; color: #000; background-color: rgba(0, 109, 41, 0.2); width: 120px; }
+#btnArea button:hover { cursor: pointer; background-color: rgba(0, 109, 41, 0.1); }
+/* 아이디 찾기 성공 페이지 끝 (login/findIDSuc.jsp) */

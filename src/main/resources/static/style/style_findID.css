@@ -1,0 +1,74 @@
+@charset "UTF-8";
+
+/* 로그인 페이지 시작 */
+div#wrapLogin {
+	width: 600px;
+	margin: 20px auto;
+	border: 4px solid #aaa;
+	padding: 10px;
+}
+
+h1 {
+	text-align: center;
+	margin: 10px 20px 20px;
+}
+
+div#tabBtnArea {
+	width: 540px;
+	padding: 4px; /* border: 1px solid #000; */
+	margin: 10px auto;
+	justify-content: center;
+}
+
+#tabBtnArea>button {
+	padding: 16px 0;
+	border: 1px solid #ccc;
+	background-color: #fff;
+	flex: 1;
+}
+
+#tabBtnArea>button:hover {
+	font-weight: bold;
+}
+
+#tabBtnArea>button.selected {
+	border-color: #08f;
+	border-bottom: none;
+}
+
+table#loginTblArea {
+	width: 540px;
+	padding: 4px; /* border: 1px solid #000; */
+	margin: 10px auto;
+}
+
+#loginTblArea td {
+	padding: 4px;
+}
+
+#loginTblArea input {
+	width: 340px;
+	padding: 14px 18px;
+	border-color: #aaa;
+	border: 1px solid #ccc;
+}
+
+#loginTblArea button {
+	width: 170px;
+	height: 98px;
+	border: none;
+	font-weight: bold;
+	color: #006a26;
+	font-size: 14px;
+	background-color: rgba(0, 109, 41, 0.2);
+	cursor: pointer;
+}
+#loginTblArea button * { display: flex; margin: 4px; margin-left: 66px; }
+#loginTblArea button:hover {
+	background-color: rgba(0, 109, 41, 0.1);
+}
+
+div#findIDBtnArea { text-align: center; }
+#findIDBtnArea button { border: none; margin: 10px; width: 120px; height: 40px;
+						font-size: 18px; background-color: #cce2d4; font-weight: bold; }
+#findIDBtnArea button:hover { cursor: pointer; background-color: rgba(0, 109, 41, 0.1); }

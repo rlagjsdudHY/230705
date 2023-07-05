@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+/* mypage.jsp, memmodifyProc.jsp, PWMod.jsp 공통사항 시작 */
+main#main {	text-align: center;	margin: 20px;}
+div#lnb {margin: 0 50px 0 0;}
+table {width: 700px; margin: 10px;	border: 1px solid #eee;}
+th {border: 1px solid #eee;	background-color: rgba(0, 109, 41, 0.2); 	font-weight: bold;	font-size: 25px;	padding: 20px 30px;}
+tr:nth-child(1) td {	font-weight: bold;	font-size: 25px;	padding: 20px 30px;}
+td {	border: 1px solid #eee;}
+td:nth-child(1) {	width: 180px;	font-weight: bold;	font-size: 23px;	
+					padding: 20px 30px; background-color: rgba(0, 109, 41, 0.2);
+					color: #006a26;	}
+td:nth-child(2) {	text-align: left;	font-size: 20px;	padding: 20px 30px;}					
+#btnArea {	margin: 20px;	text-align: center;}
+#btnArea button {	font-size: 20px;	padding: 10px 15px;	border-radius: 6px;	border: 1px solid #eee;
+					background-color: rgba(0, 109, 41, 0.1);	color: #006a26;	margin: 10px;}
+/* mypage.jsp, memmodifyProc.jsp, PWMod.jsp 공통사항 끝 */
+
+
+/* memmodifyProc.jsp 시작 */
+td:nth-child(2) input {	font-size: 20px;	padding: 5px 10px;	width: 300px; border: 1px solid #eee;}
+/* memmodifyProc.jsp 끝 */
+
+/* PWMod.jsp 시작 */
+
+/* PWMod.jsp 끝 */
+
