@@ -57,7 +57,7 @@ public class QNAController {
 	
 	@RequestMapping("/QNAwriteProc") // QNA 글쓰기 로직
 	public String noticeWriteProc(@RequestParam("fileName")  MultipartFile file, Model model,HttpServletRequest req) {
-		String SAVEFILE = "D:\\AJR_20230126\\HY\\silsp\\p10_SpringBoot\\ComputerSite\\bin\\main\\static\\uploadDir";
+		String SAVEFILE = "D:\\AJR_20230126\\KSH\\silsp\\p11_SpringBoot\\ComputerSite\\bin\\main\\static\\uploadDir";
 		String title = req.getParameter("title");
 		String content = req.getParameter("content");
 //		String uName = req.getParameter("uName");
@@ -160,7 +160,7 @@ public class QNAController {
 	
 	@RequestMapping("/QNAmodProc") //게시글 수정 로직
 	public String QNAmodProc(@RequestParam("fileName")  MultipartFile file,Model model, HttpServletRequest req) {
-		String SAVEFILE = "D:\\AJR_20230126\\HY\\silsp\\p10_SpringBoot\\ComputerSite\\bin\\main\\static\\uploadDir";
+		String SAVEFILE = "D:\\AJR_20230126\\KSH\\silsp\\p11_SpringBoot\\ComputerSite\\bin\\main\\static\\uploadDir";
 		String title = req.getParameter("title");
 		String content = req.getParameter("content");
 		String num = req.getParameter("num");

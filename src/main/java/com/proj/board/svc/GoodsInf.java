@@ -1,6 +1,7 @@
 package com.proj.board.svc;
 
 import java.util.List;
+import java.util.Map;
 
 import com.proj.board.dto.GoodsDto;
 
@@ -14,5 +15,7 @@ public interface GoodsInf {
 
 	// 상품개수 수정
 	public Object cntChange(String num, String cnt);
-
+	
+	// 상품 장바구니 등록 실행
+	public void goodsRegProc(Map<String, String> map);
 }

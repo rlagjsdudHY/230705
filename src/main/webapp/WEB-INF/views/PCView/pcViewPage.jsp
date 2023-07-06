@@ -2,6 +2,9 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%
+	String uidSession = (String) session.getAttribute("uidSession");
+%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -248,17 +251,17 @@
 				<div id="orderArea" class="opArea dFlex">
 					<span>주문 수량</span>
 					<div id="orderCnt">
-						<select name="orderCnt" id="orderCnt">
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-							<option value="5">5</option>
-							<option value="6">6</option>
-							<option value="7">7</option>
-							<option value="8">8</option>
-							<option value="9">9</option>
-							<option value="10">10</option>
+						<select name="orderCnt" id="orderCnt" form="cartForm">
+							<option >1</option>
+							<option >2</option>
+							<option >3</option>
+							<option>4</option>
+							<option>5</option>
+							<option>6</option>
+							<option>7</option>
+							<option>8</option>
+							<option>9</option>
+							<option>10</option>
 						</select> <span>개</span>
 					</div>
 				</div>
@@ -276,16 +279,22 @@
 						</tr>
 						<tr>
 							<th><span>결제금액</span></th>
-							<td><span id="TotalPrice">${pcDetailDto.pcPrice}</span> <span>원
+							<td><span id="TotalPrice" name="" form="cartForm">${pcDetailDto.pcPrice}</span> <span name="price" form="cartForm">원
 									(V.A.T 포함)</span></td>
 						</tr>
 					</tbody>
 				</table>
-
+				<input type="text" value="" name="test" form="cartForm">
+				<input type="hidden" name="uid" value="${uidSession}" form="cartForm" >
+				<input type="hidden" name="goodsName" value="${pcDetailDto.goodsName}" form="cartForm">
+				<%-- <input type="hidden" name="price"  form="cartForm" value="${TotalPrice }"> --%>
+				<input type="hidden" name="cnt"  form="cartForm" value="${orderCnt }">
+				
+				
 				<div id="btnArea">
-					<span>구매하기</span> <span>장바구니 담기</span> <span>견적서 출력</span>
+					<span>구매하기</span> <span><button form="cartForm">장바구니 담기</button></span> <span>견적서 출력</span>
 				</div>
-
+				<form action="/goodsRegProc" id="cartForm"></form>
 			</div>
 		</main>
 
@@ -331,6 +340,7 @@
 
 				// Format totalPrice with commas
 				$("#TotalPrice").text(addCommas(totalPrice)); // 최종 결제금액 업데이트
+			$('input[name=test]').attr('value',totalPrice);
 			}
 
 			$("div#selArea select, select#orderCnt").change(updateTotalPrice);

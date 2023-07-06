@@ -72,7 +72,7 @@ div.listRow span.delIcon:hover {font-size: 20px; font-weight: bold;}
 				<span>${list.email}</span>
 				<fmt:formatDate var="regTM" value="${list.regTM}" pattern="yyyy-MM-dd"/>
 				<span>${regTM}</span>
-				<span class="deleteq">&times;</span>
+				<span class="delIcon">&times;</span>
 			</div>
 			</c:forEach>
 		</div>
@@ -93,7 +93,7 @@ div.listRow span.delIcon:hover {font-size: 20px; font-weight: bold;}
             });
             
             // 리스트 개별 삭제
-            $("span.deleteq").click(function(){
+            $("span.delIcon").click(function(){
                let chkToF = confirm("선택하신 회원을 삭제하시겠습니까?");
                if(chkToF) {
                   let num = $(this).parent("div").attr("data-link");

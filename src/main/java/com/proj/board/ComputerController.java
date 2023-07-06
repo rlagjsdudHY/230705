@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.proj.board.svc.GoodsInf;
 import com.proj.board.svc.PCInf;
 
 @Controller
@@ -23,6 +24,9 @@ public class ComputerController {
 
 	@Autowired
 	private PCInf pCInf;
+	
+	@Autowired
+	private GoodsInf goodsInf;
 
 	@RequestMapping("/")
 	public String root() {
@@ -80,16 +84,14 @@ public class ComputerController {
 
 	// joinAgreement의 약관동의 끝
 
-	
+	// 1. 로그인 작업
 
 	@RequestMapping("/join") // 회원가입페이지
 	public String join() {
 
 		return "login/join";
 	}
-	
-	// 1. 회원가입 작업
-	
+
 	@RequestMapping("/joinProc") // 회원가입 처리 로직
 	public String joinProc(Model model, HttpServletRequest req) {
 		String uid = req.getParameter("uid");
@@ -113,6 +115,7 @@ public class ComputerController {
 			map.put("item6", Email);
 
 			pCInf.mtdJoin(map);
+			
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
@@ -125,11 +128,9 @@ public class ComputerController {
 
 		return "/login/joinSuccess";
 	}
-	// 1. 회원가입 작업 끝
 
-	// 2. 로그인 작업
-	
-	@ResponseBody
+	// 1. 로그인 작업 끝
+	@ResponseBody		//로그인 프로세스
 	@RequestMapping(value = "/loginProc", method = RequestMethod.GET)
 	public String loginProc(Model model, HttpServletRequest req) {
 		String uid = req.getParameter("uid");

@@ -1,6 +1,7 @@
 package com.proj.board.svc;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,4 +36,10 @@ public class GoodsImp implements GoodsInf {
 		
 	}
 
+	// 상품 장바구니 등록 실행
+	@Override
+	public void goodsRegProc(Map<String, String> map) {
+		goodsDao.goodsRegProc(map);
+		
+	}
 }
