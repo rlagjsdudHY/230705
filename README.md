@@ -3,6 +3,7 @@
 - Spring Boot로 구현한 컴퓨터 판매 게시판 입니다.
 
 - sts4 버전 2.7.4
+- Java 11
 - MySQL DB
 - MyBatis
 - MVC패턴
