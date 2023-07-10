@@ -76,17 +76,22 @@
 	        		
 	        		let upwRe = $("#upwRe").val().trim();
 	        		
-	        	
+	        		// 비밀번호 형식
+	        		let pwRule = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[~!@#$%^*+=-]).{8,20}$/;
+	        		
+	        		
 	            	if (upw=="") { 
 		             	alert("새 비밀번호를 입력해주세요.");
 		             	$("#upw").focus();
-		         	} else if(upwRe=="") {
+		         	} else if(!pwRule.test($("#upw").val())) {
+						alert("8~20자의 영문 대/소문자, 숫자, 특수문자를 사용해 주세요.");
+						$("#upw").focus();
+		        	} else if(upwRe=="") {
 		         		alert("새 비밀번호 확인을 입력해주세요.");
 		    			$("#upwRe").focus();
 		         	} else if(upw != upwRe){
 		         		alert("입력한 비밀번호가 서로 일치하지 않습니다.");
-		    			$("#upw").focus();
-		         		
+		    			$("#upwRe").focus();
 		        	} else {
 		         		let chkSbmTF = confirm("비밀번호를 수정 하시겠습니까?");
 		        		if (chkSbmTF) {
@@ -94,7 +99,7 @@
 		        			$("#pwChngFrm").submit();
 		         		}
 		         	}
-	            	 
+	            	
 				});
 	        	
 	        	/* 폼실행 엔터키 이벤트 처리 */

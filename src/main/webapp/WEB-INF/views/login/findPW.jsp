@@ -67,7 +67,10 @@
 			});
 			
 			$("button#findPWBtn").click(function(){
+				
+				// 전화번호 형식
 				let phoneRule = /^\d{3}-\d{4}-\d{4}$/;
+				
 				if ($("#uid").val() == null || $("#uid").val() == "") {
 					alert("아이디 입력해주세요.");
 					$("#uid").focus();

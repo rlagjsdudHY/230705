@@ -38,14 +38,14 @@
 			            <tr>
 			                <td>비밀번호</td>
 			                <td>
-				                <input type="text" name="upw" id="upw">
+				                <input type="password" name="upw" id="upw">
 								<span id="upwChk"></span>
 							</td>
 			            </tr>
 			            <tr>
 			                <td>비밀번호 확인</td>
 			                <td>
-				                <input type="text" id="upw_Re">
+				                <input type="password" id="upw_Re">
 								<span id="pwChk"></span>
 							</td>
 			            </tr>
@@ -59,7 +59,8 @@
 			            <tr>
 			                <td>전화번호</td>
 			                <td>
-			                	<input type="text" name="phone" id="phone">
+			                	<input type="text" name="phone" id="phone"
+			                	placeholder="- 포함해서 입력">
 								<span id="phoneChk"></span>
 			                </td>
 			            </tr>
@@ -183,21 +184,53 @@
         			let phone = $("input#phone").val().trim(); 
         			let address = $("input#address").val().trim(); 
         			let Email1 = $("input#Email1").val().trim(); 
-        			let Email2 = $("input#Email2").val().trim(); 
+        			let Email2 = $("input#Email2").val().trim();
+        			
+        			// 비밀번호 형식
+        			let pwRule = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^*+=-]).{8,20}$/;
+        			// 전화번호 형식
+    				let phoneRule = /^\d{3}-\d{4}-\d{4}$/;
+        			
 					if( uid == "") {
 						alert("아이디를 입력해주세요.");
+						$("input#uid").focus();
+        				return false;
 					} else if (upw == "") {
         				alert("비밀번호를 입력해주세요.");
-        			} else if (upw !== upw_Re) {
-        				alert("비밀번호가 다릅니다.");
+        				$("input#upw").focus();
+        				return false;
+        			} else if (!pwRule.test(upw)) {
+        				alert("비밀번호는 8~20자의 영문 대/소문자, 숫자, 특수문자를 사용해주세요.");
+        				$("input#upw").focus();
+        				return false;
+        			} else if (upw_Re == "") {
+        				alert("비밀번호 확인을 입력해주세요.");
+        				$("input#upw_Re").focus();
+        				return false;
+        			}  else if (upw !== upw_Re) {
+        				alert("비밀번호 확인이 올바르지 않습니다.");
+        				$("input#upw_Re").focus();
+        				return false;
         			} else if (uName == "") {
         				alert("이름을 입력해주세요");
+        				$("input#uName").focus();
+        				return false;
         			} else if (phone == "") {
         				alert("전화번호를 입력해주세요");
+        				$("input#phone").focus();
+        				return false;
+        			} else if (!phoneRule.test(phone)) {
+        				alert("전화번호 형식에 맞게 입력해주세요.");
+        				$("input#phone").focus();
+        				return false;
         			} else if (Email1 =="") {
         				alert("이메일을 입력해주세요");
+        				$("input#Email1").focus();
+        				return false;
         			} else if (Email2 =="") {
         				alert("이메일을 입력해주세요.");
+        				$("input#Email2").focus();
+        				return false;
         			} else { 
         				let chkSbmTF = confirm("회원가입하시겠습니까?");
         				if (chkSbmTF) {

@@ -27,6 +27,10 @@ public interface QNAInf {
 	
 	public void QNAmodProc(String title,String content,String fileName,String uid,String name,String num); //QNA글수정 로직
 	
+	public void QNAmodProc2(String title,String content,String uid,String name,String num); //QNA글수정 파일수정없을떄
+	
 	public void QNAreadCnt(String num); // QNA 글 조회수증가
+	
+	public void QNAfileDel(String filedel,String num); // 게시글파일삭제
 
 }

@@ -9,74 +9,8 @@
 <title>Document</title>
 <link rel="stylesheet" href="/style/style.css">
 <link rel="stylesheet" href="/style/style_Template.css">
-<style>
-#chatbot-window {
-	display: none;
-	position: fixed;
-	bottom: 20px;
-	right: 20px;
-	width: 300px;
-	height: 400px;
-	border: 1px solid #ccc;
-	background-color: #fff;
-}
-
-#chatbot-header {
-	padding: 10px;
-	background-color: #f2f2f2;
-	border-bottom: 1px solid #ccc;
-}
-
-#chatbot-title {
-	font-weight: bold;
-}
-
-#chatbot-content {
-	height: 320px;
-	overflow-y: auto;
-	padding: 10px;
-}
-
-#chatbot-input {
-	padding: 10px;
-	border-top: 1px solid #ccc;
-}
-
-#chatbot-input-text {
-	width: 200px;
-}
-
-#chatbot-input-submit {
-	margin-left: 10px;
-}
-
-/* 추가된 CSS */
-#chatbot-options-container {
-	display: none;
-	position: absolute;
-	top: calc(100% + 10px); /* 선택 창이 메시지 입력칸 아래로 이동 */
-	left: 0;
-	width: 100%;
-	background-color: #fff;
-	border: 1px solid #ccc;
-	padding: 10px;
-}
-
-.chat-option {
-	cursor: pointer;
-	margin-bottom: 5px;
-}
-
-.chat-option:hover {
-	background-color: #f2f2f2;
-}
-</style>
 </head>
 <body>
-	<div id="chatbot-bar">
-		<button id="chatbot-button">Chatbot</button>
-	</div>
-
 	<div id="wrap">
 		<header>
 			<!--  헤더템플릿 시작 -->
@@ -157,20 +91,10 @@
 		<%@ include file="/WEB-INF/views/ind/footerTmp.jsp"%>
 		<!--  푸터템플릿 끝 -->
 	</div>
-	<div id="chatbot-window">
-		<div id="chatbot-header">
-			<span id="chatbot-title">Chatbot</span>
-		</div>
-		<div id="chatbot-content"></div>
-		<div id="chatbot-input">
-			<input type="text" id="chatbot-input-text" placeholder="메시지를 입력하세요">
-			<button id="chatbot-input-submit">전송</button>
-		</div>
-		<div id="chatbot-options-container"></div>
-		<!-- 선택 창을 담을 컨테이너 -->
-	</div>
 	<!-- div#wrap -->
 	<script src="/script/jquery-3.6.4.min.js"></script>
 	<script src="/script/script.js"></script>
+
+
 </body>
 </html>

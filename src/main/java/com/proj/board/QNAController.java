@@ -57,7 +57,7 @@ public class QNAController {
 	
 	@RequestMapping("/QNAwriteProc") // QNA 글쓰기 로직
 	public String noticeWriteProc(@RequestParam("fileName")  MultipartFile file, Model model,HttpServletRequest req) {
-		String SAVEFILE = "D:\\AJR_20230126\\KSH\\silsp\\p11_SpringBoot\\ComputerSite\\bin\\main\\static\\uploadDir";
+		String SAVEFILE = "C:\\Users\\Computer\\Downloads\\AJR_20230126\\HY\\silsp\\p10_SpringBoot\\ComputerSite\\bin\\main\\static\\uploadDir";
 		String title = req.getParameter("title");
 		String content = req.getParameter("content");
 //		String uName = req.getParameter("uName");
@@ -160,7 +160,7 @@ public class QNAController {
 	
 	@RequestMapping("/QNAmodProc") //게시글 수정 로직
 	public String QNAmodProc(@RequestParam("fileName")  MultipartFile file,Model model, HttpServletRequest req) {
-		String SAVEFILE = "D:\\AJR_20230126\\KSH\\silsp\\p11_SpringBoot\\ComputerSite\\bin\\main\\static\\uploadDir";
+		String SAVEFILE = "C:\\Users\\Computer\\Downloads\\AJR_20230126\\HY\\silsp\\p10_SpringBoot\\ComputerSite\\bin\\main\\static\\uploadDir";
 		String title = req.getParameter("title");
 		String content = req.getParameter("content");
 		String num = req.getParameter("num");
@@ -186,7 +186,12 @@ public class QNAController {
 		}
 		System.out.println(fileName);
 		System.out.println(num);
-		qNAinf.QNAmodProc(title,content,fileName,uid,name,num);
+		if(!fileName.isEmpty()) {
+			qNAinf.QNAmodProc(title,content,fileName,uid,name,num);
+			
+		}else {
+			qNAinf.QNAmodProc2(title,content,uid,name,num);
+		}
 		
 		return "redirect:/QNA";
 	}
@@ -200,6 +205,17 @@ public class QNAController {
 			System.out.println(e.getMessage());
 		}
 		return "";
+	}
+	@RequestMapping("/filedel") //파일삭제
+	public void QNAfiledel(@RequestParam String filedel,@RequestParam String num,Model model,HttpServletRequest req) {
+//		String filedel = req.getParameter("filedel");
+		System.out.println("파일삭제 : "+filedel);
+		System.out.println("파일번호 : " + num);
+		try {
+			qNAinf.QNAfileDel(filedel,num);
+		} catch (Exception e) {
+			
+		}
 	}
 	
 	
