@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.proj.board.svc.GoodsInf;
 import com.proj.board.svc.PCInf;
 
 @Controller
@@ -24,9 +23,6 @@ public class ComputerController {
 
 	@Autowired
 	private PCInf pCInf;
-	
-	@Autowired
-	private GoodsInf goodsInf;
 
 	@RequestMapping("/")
 	public String root() {
@@ -84,14 +80,16 @@ public class ComputerController {
 
 	// joinAgreement의 약관동의 끝
 
-	// 1. 로그인 작업
+	
 
 	@RequestMapping("/join") // 회원가입페이지
 	public String join() {
 
 		return "login/join";
 	}
-
+	
+	// 1. 회원가입 작업
+	
 	@RequestMapping("/joinProc") // 회원가입 처리 로직
 	public String joinProc(Model model, HttpServletRequest req) {
 		String uid = req.getParameter("uid");
@@ -128,9 +126,11 @@ public class ComputerController {
 
 		return "/login/joinSuccess";
 	}
+	// 1. 회원가입 작업 끝
 
-	// 1. 로그인 작업 끝
-	@ResponseBody		//로그인 프로세스
+	// 2. 로그인 작업
+	
+	@ResponseBody
 	@RequestMapping(value = "/loginProc", method = RequestMethod.GET)
 	public String loginProc(Model model, HttpServletRequest req) {
 		String uid = req.getParameter("uid");
@@ -429,5 +429,58 @@ public class ComputerController {
 		}
 		return "/login/findIDSuc";
 	}
+	
+	// 비밀번호 찾기 페이지 이동
+		@RequestMapping("/findPW")
+		public String findPW() {
+			return "login/findPW";
+		}
+		
+		// 비밀번호 찾기 작업 처리
+		@RequestMapping(value = "/findPWSuc", method = RequestMethod.GET)
+		public String findPWProc(Model model, HttpServletRequest req, HttpServletResponse res) {
+			String uid = req.getParameter("uid");
+			String uname = req.getParameter("uname");
+			String phone = req.getParameter("phone");
+			try {
+				int result = pCInf.findPWProc(uid, uname, phone);
+				System.out.println(result);
+				if (result == 1) {
+					System.out.println("비밀번호 찾기 성공");
+					model.addAttribute("findPWSuc", pCInf.mtdFindPWSuc(uid));
+				} else {
+					System.out.println("비밀번호 찾기 실패");
+					String msg = "입력하신 정보를 찾을 수 없습니다. 다시 확인해주세요";
+					res.setContentType("text/html; charset=UTF-8");
+					PrintWriter out = res.getWriter();
+					out.println("<script>alert('" + msg + "'); location.href='/findPW'</script>");
+					return null;
+				}
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
+			return "/login/findPWSuc";
+		}
+		
+		// 비밀번호 찾기 성공 후 수정 실행
+		@RequestMapping("/pwModProc2")
+		public String pwModProc2(Model model, HttpServletRequest req) {
+			String upw = req.getParameter("upw");
+			String uid = req.getParameter("uid");
 
+			try {
+				Map<String, String> map = new HashMap<>();
+				map.put("item1", upw);
+				map.put("item2", uid);
+
+				pCInf.pwModProc(map);
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
+
+			return "/login/login";
+		}
+
+		
+		
 }

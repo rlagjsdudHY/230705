@@ -214,3 +214,13 @@ table#joinTbl td:nth-child(2) select { font-size: 18px;	padding: 5px;}
 #btnArea button { font-weight: bold; color: #000; background-color: rgba(0, 109, 41, 0.2); width: 120px; }
 #btnArea button:hover { cursor: pointer; background-color: rgba(0, 109, 41, 0.1); }
 /* 아이디 찾기 성공 페이지 끝 (login/findIDSuc.jsp) */
+
+
+/* 비밀번호 찾기 성공 페이지 시작 (login/findPWSuc.jsp) */
+main#main { margin: 10px auto; }
+#main table { margin: 0 auto; }
+div#PwInput table tbody tr th { text-align: left; }
+#PwInput table tbody tr th,
+#PwInput table tbody tr td { padding: 4px; }
+input[type=password] { font-size: 18px; padding: 2px; }
+/* 비밀번호 찾기 성공 페이지 끝 (login/findPWSuc.jsp) */

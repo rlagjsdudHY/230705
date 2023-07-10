@@ -274,17 +274,17 @@
 						</tr>
 						<tr>
 							<th><span>기본가격</span></th>
-							<td><span id="basePrice">${pcDetailDto.pcPrice}</span> <span>원</span>
+							<td><span id="basePrice" >${pcDetailDto.pcPrice}</span> <span>원</span>
 							</td>
 						</tr>
 						<tr>
 							<th><span>결제금액</span></th>
-							<td><span id="TotalPrice">${pcDetailDto.pcPrice}</span> <span name="price" form="cartForm">원
+							<td><span id="TotalPrice" name="TotalPrice" form="cartForm">${pcDetailDto.pcPrice}</span> <span name="price" form="cartForm">원
 									(V.A.T 포함)</span></td>
 						</tr>
 					</tbody>
 				</table>
-
+				
 				<input type="hidden" name="uid" value="${uidSession}" form="cartForm" >
 				<input type="hidden" name="goodsName" value="${pcDetailDto.goodsName}" form="cartForm">
 				<%-- <input type="hidden" name="price"  form="cartForm" value="${TotalPrice }"> --%>
@@ -292,12 +292,14 @@
 				
 				
 				<div id="btnArea">
-					<span>구매하기</span> <span><button form="cartForm">장바구니 담기</button></span> <span>견적서 출력</span>
+					<span>구매하기</span> <span><button form="cartForm" id="cartFormBtn">장바구니 담기</button></span> <span>견적서 출력</span>
 				</div>
 				<form action="/goodsRegProc" id="cartForm"></form>
 			</div>
 		</main>
-
+		
+		<input type="text" form="cartForm" value="${pcDetailDto.pcPrice}" name="SS">	
+		<input type="text" value="0" name="test" form="cartForm">
 		<!--  푸터템플릿 시작 -->
 		<%@ include file="/WEB-INF/views/ind/footerTmp.jsp"%>
 		<!--  푸터템플릿 끝 -->
@@ -340,10 +342,81 @@
 
 				// Format totalPrice with commas
 				$("#TotalPrice").text(addCommas(totalPrice)); // 최종 결제금액 업데이트
+				$('input[name=test]').attr('value',totalPrice);
+// 				if(totalPrice != basePrice ){
+// 				    $('input[name=test]').attr('value',basePrice);
+// 				}
+				
+				
+// 			 $("#cartFormBtn").click(function(){
+// 				 $.ajax({
+// 						url : "/goodsRegProc",
+// 						type : "POST",
+// 						data : {
+// 							basePrice : basePrice,totalPrice : totalPrice
+// 						},
+// 						success : function(response) {
+							
+// 						},
+// 						error : function(xhr, status, error) {
+// 							console.log(" : " + error);
+// 						}
+// 					});
+// 			 });
+			// 에이잭스처리
+// 			$.ajax({
+// 				url : "/goodsRegProc",
+// 				type : "POST",
+// 				data : {
+// 					basePrice : basePrice,totalPrice : totalPrice
+// 				},
+// 				success : function(response) {
+					
+// 				},
+// 				error : function(xhr, status, error) {
+// 					console.log(" : " + error);
+// 				}
+// 			});
+			//에이잭스처리끝
+			
+// 			// 에이잭스처리2
+// 			$.ajax({
+// 				url : "/goodsRegProc",
+// 				type : "POST",
+// 				data : {
+// 					totalPrice : totalPrice
+// 				},
+// 				success : function(response) {
+					 
+// 				},
+// 				error : function(xhr, status, error) {
+// 					console.log(" : " + error);
+// 				}
+// 			});
+// 			//에이잭스처리끝2
 			}
 
 			$("div#selArea select, select#orderCnt").change(updateTotalPrice);
+		
+			
 		});
+// 	 $(function(){
+// 		 $("#cartFormBtn").click(function{
+// 			 $.ajax({
+// 					url : "/goodsRegProc",
+// 					type : "POST",
+// 					data : {
+// 						basePrice : basePrice,totalPrice : totalPrice
+// 					},
+// 					success : function(response) {
+						
+// 					},
+// 					error : function(xhr, status, error) {
+// 						console.log(" : " + error);
+// 					}
+// 				});
+// 		 });
+// 	 });
 	</script>
 </body>
 </html>

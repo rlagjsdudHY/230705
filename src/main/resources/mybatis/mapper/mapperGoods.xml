@@ -1,33 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-	
+
 <mapper namespace="com.proj.board.dao.GoodsDao">
 
-	<insert id="goodsRegProc"> 
-		insert into Cart (uid, goodsName, price, cnt) 
-		values (#{uid}, #{goodsName}, #{price}, #{cnt}) 
-	</insert>
-	
 	<!-- 장바구니 리스트 -->
 	<select id="cart" resultType="com.proj.board.dto.GoodsDto">
-		select * from Cart where uid=#{uid} order by num desc
+		select * from Cart where uid=#{uid}
+		order by num desc
 	</select>
-	
+
 	<!-- 상품 리스트 삭제 태그 -->
 	<delete id="mtdDelete">
 		delete from Cart
-	 	<where>
-	 		<foreach item="item" index="index" collection="array" open="num in (" separator="," close=")">
-	 		#{item}
-	 		</foreach>
-	 	</where>
-	 </delete>
-	
+		<where>
+			<foreach item="item" index="index" collection="array"
+				open="num in (" separator="," close=")">
+				#{item}
+			</foreach>
+		</where>
+	</delete>
+
 	<!-- 상품 개수 수정 -->
 	<update id="cntChange" parameterType="java.util.HashMap">
 		update Cart set
-		cnt = #{param2}
+		cnt =
+		#{param2}
 		where num=#{param1}
-	</update> 
+	</update>
+
+	<!-- 상품 장바구니 등록  -->
+	<insert id="goodsRegProc">
+		insert into Cart (uid, goodsName, price, cnt)
+		values (#{uid}, #{goodsName}, #{price}, #{cnt})
+	</insert>
+
 </mapper>

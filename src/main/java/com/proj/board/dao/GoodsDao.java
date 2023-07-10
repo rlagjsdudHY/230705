@@ -20,4 +20,5 @@ public interface GoodsDao {
 
 	// 상품 장바구니 등록 실행
 	public void goodsRegProc(Map<String, String> map);
+
 }

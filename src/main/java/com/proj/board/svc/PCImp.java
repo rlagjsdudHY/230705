@@ -139,5 +139,17 @@ public class PCImp implements PCInf {
 	public List<PCDto> mtdFindIDSucc(String uname) {
 		return pCDao.mtdFindIDSucc(uname);
 	}
+	
+	// 비밀번호 찾기 작업 처리
+	@Override
+	public int findPWProc(String uid, String uname, String phone) {
+		return pCDao.findPWProc(uid, uname, phone);
+	}
+	
+	// 비밀번호 찾기 성공 페이지 이동
+	@Override
+	public List<PCDto> mtdFindPWSuc(String uid) {
+		return pCDao.mtdFindPWSuc(uid);
+	}
 
 }

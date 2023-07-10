@@ -74,6 +74,13 @@ public interface PCInf {
 	
 	// 아이디 찾기 성공 페이지 이동
 	public List<PCDto> mtdFindIDSucc(String uname);
+	
+	// 비밀번호 찾기 작업 처리
+	public int findPWProc(String uid, String uname, String phone);
+	
+	// 비밀번호 찾기 성공 페이지 이동
+	public List<PCDto> mtdFindPWSuc(String uid);
+
 
 
 }

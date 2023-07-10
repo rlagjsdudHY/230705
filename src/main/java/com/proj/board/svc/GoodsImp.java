@@ -11,7 +11,7 @@ import com.proj.board.dto.GoodsDto;
 
 @Service
 public class GoodsImp implements GoodsInf {
-	
+
 	@Autowired
 	private GoodsDao goodsDao;
 
@@ -25,7 +25,7 @@ public class GoodsImp implements GoodsInf {
 	@Override
 	public void mtdDelete(String[] delIdx) {
 		goodsDao.mtdDelete(delIdx);
-		
+
 	}
 
 	// 상품개수 수정
@@ -33,13 +33,12 @@ public class GoodsImp implements GoodsInf {
 	public Object cntChange(String num, String cnt) {
 		return goodsDao.cntChange(num, cnt);
 		// TODO Auto-generated method stub
-		
 	}
-
-	// 상품 장바구니 등록 실행
+		
+		// 상품 장바구니 등록 실행
 	@Override
 	public void goodsRegProc(Map<String, String> map) {
 		goodsDao.goodsRegProc(map);
-		
 	}
+
 }

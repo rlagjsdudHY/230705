@@ -48,7 +48,7 @@
 				<span>아이디 찾기</span>
 			</div>
 			<div>|</div>
-			<div class="optIcon">
+			<div class="optIcon" onclick="location.href='/findPW'">
 				<figure>
 					<img src="../images/icon03_FindPW.png" alt="">
 				</figure>

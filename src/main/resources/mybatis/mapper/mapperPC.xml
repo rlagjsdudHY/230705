@@ -142,5 +142,17 @@
 		select * from memList
 		where uname=#{param1}
 	</select>
+	
+		<!-- 비밀번호 찾기 -->
+	<select id="findPWProc" resultType="int">
+		select count(*) from memList
+		where uid = #{param1} and uname = #{param2} and phone = #{param3}
+	</select>
+	
+	<!-- 비밀번호 찾기 성공 -->
+	<select id="mtdFindPWSuc" resultType="com.proj.board.dto.PCDto">
+		select * from memList
+		where uid = #{param1}
+	</select>
 
 </mapper>
