@@ -101,8 +101,20 @@ button {
 						<td>${list.title}</td>
 						<td>${list.writer}</td>
 						<td>${list.readcnt}</td>
-						<td><fmt:formatDate value="${list.regTM}"
-								pattern="yyyy-MM-dd" /></td>
+						 <td>
+                <c:set var="currentTime" value="<%= new java.util.Date().getTime() %>"/>
+                <c:set var="timeDifference" value="${currentTime - list.regTM.time}"/>
+                <c:choose>
+                    <c:when test="${timeDifference lt (24 * 60 * 60 * 1000)}">
+                        <!-- 24시간 이내인 경우 -->
+                        <fmt:formatDate value="${list.regTM}" pattern="HH:mm:ss" />
+                    </c:when>
+                    <c:otherwise>
+                        <!-- 24시간 이후인 경우 -->
+                        <fmt:formatDate value="${list.regTM}" pattern="yyyy-MM-dd" />
+                    </c:otherwise>
+                </c:choose>
+            </td>
 					</tr>
 				</c:forEach>
 			</tbody>

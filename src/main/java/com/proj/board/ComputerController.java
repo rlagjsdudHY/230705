@@ -113,6 +113,7 @@ public class ComputerController {
 			map.put("item6", Email);
 
 			pCInf.mtdJoin(map);
+			
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
@@ -428,5 +429,58 @@ public class ComputerController {
 		}
 		return "/login/findIDSuc";
 	}
+	
+	// 비밀번호 찾기 페이지 이동
+		@RequestMapping("/findPW")
+		public String findPW() {
+			return "login/findPW";
+		}
+		
+		// 비밀번호 찾기 작업 처리
+		@RequestMapping(value = "/findPWSuc", method = RequestMethod.GET)
+		public String findPWProc(Model model, HttpServletRequest req, HttpServletResponse res) {
+			String uid = req.getParameter("uid");
+			String uname = req.getParameter("uname");
+			String phone = req.getParameter("phone");
+			try {
+				int result = pCInf.findPWProc(uid, uname, phone);
+				System.out.println(result);
+				if (result == 1) {
+					System.out.println("비밀번호 찾기 성공");
+					model.addAttribute("findPWSuc", pCInf.mtdFindPWSuc(uid));
+				} else {
+					System.out.println("비밀번호 찾기 실패");
+					String msg = "입력하신 정보를 찾을 수 없습니다. 다시 확인해주세요";
+					res.setContentType("text/html; charset=UTF-8");
+					PrintWriter out = res.getWriter();
+					out.println("<script>alert('" + msg + "'); location.href='/findPW'</script>");
+					return null;
+				}
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
+			return "/login/findPWSuc";
+		}
+		
+		// 비밀번호 찾기 성공 후 수정 실행
+		@RequestMapping("/pwModProc2")
+		public String pwModProc2(Model model, HttpServletRequest req) {
+			String upw = req.getParameter("upw");
+			String uid = req.getParameter("uid");
 
+			try {
+				Map<String, String> map = new HashMap<>();
+				map.put("item1", upw);
+				map.put("item2", uid);
+
+				pCInf.pwModProc(map);
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
+
+			return "/login/login";
+		}
+
+		
+		
 }

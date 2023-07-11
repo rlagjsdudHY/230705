@@ -108,29 +108,33 @@
         		
         		let upwRe = $("#upwRe").val().trim();
         		
+        		// 비밀번호 형식
+    			let pwRule = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^*+=-]).{8,20}$/;
+        		
         	
-            	 if (nowPw == "" ){
+    			if (nowPw == "") {
             		alert("현재 비밀번호를 입력해주세요.");
          			$("#nowPw").focus();
-             	} else if (upw=="") { 
-	             
+             	} else if (nowPw != nowPwChk) {
+	         		alert("현재 비밀번호가 옳바르지 않습니다.");
+	    			$("#nowPw").focus();
+	         	} else if (upw=="") {
 	             	alert("새 비밀번호를 입력해주세요.");
 	             	$("#upw").focus();
+	         	} else if (!pwRule.test(upw)) {
+    				alert("비밀번호는 8~20자의 영문 대/소문자, 숫자, 특수문자를 사용해주세요.");
+    				$("input#upw").focus();
+    				return false;
+    			} else if (nowPw == upw) {
+	        		alert("새 비밀번호가 기존 비밀번호와 동일합니다.");
+	    			$("#upw").focus();
 	         	} else if(upwRe=="") {
 	         		alert("새 비밀번호 확인을 입력해주세요.");
 	    			$("#upwRe").focus();
 	         	} else if(upw != upwRe){
 	         		alert("새 비밀번호 일치여부를 확인해주세요.");
-	    			$("#upw").focus();
-	         		
-	        	}else if(nowPw == upw){
-	        		alert("새 비밀번호가 기존 비밀번호와 동일합니다.");
 	    			$("#upwRe").focus();
-	         	}else if(nowPw != nowPwChk ){
-	         		alert("현재 비밀번호가 옳바르지 않습니다.");
-	    			$("#nowPw").focus();
-	         	
-	         	}else{
+	        	} else {
 	         		let chkSbmTF = confirm("비밀번호를 수정 하시겠습니까?");
 	        		if (chkSbmTF) {
 	        			$("#pwChngFrm").attr("action", "pwModProc");
@@ -138,15 +142,13 @@
 	         		}
 	         	}
             	 
-            	 /* 폼실행 엔터키 이벤트 처리 */
-	         	
-             
 			});
-        
-            		$(window).keydown(function(){
-            			let code = event.keyCode;
-            			if (code == 13) return false;
-            		});
+        	
+        	/* 폼실행 엔터키 이벤트 처리 */
+      		$(window).keydown(function(){
+      			let code = event.keyCode;
+      			if (code == 13) return false;
+      		});
         	
         });
         </script>

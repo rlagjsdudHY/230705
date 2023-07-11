@@ -72,3 +72,16 @@ div#findIDBtnArea { text-align: center; }
 #findIDBtnArea button { border: none; margin: 10px; width: 120px; height: 40px;
 						font-size: 18px; background-color: #cce2d4; font-weight: bold; }
 #findIDBtnArea button:hover { cursor: pointer; background-color: rgba(0, 109, 41, 0.1); }
+div#findPWBtnArea { text-align: center; }
+#findPWBtnArea button { border: none; margin: 10px; width: 120px; height: 40px;
+						font-size: 18px; background-color: #cce2d4; font-weight: bold; }
+#findPWBtnArea button:hover { cursor: pointer; background-color: rgba(0, 109, 41, 0.1); }
+button#findPWBtn span { /* border: 1px solid #000; */ margin-left: 56px;}
+
+
+
+
+
+
+
+

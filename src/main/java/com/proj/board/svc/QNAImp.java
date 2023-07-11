@@ -57,9 +57,17 @@ public class QNAImp implements QNAInf {
 	public void QNAmodProc(String title,String content,String fileName,String uid,String name,String num){
 		  qNADao.QNAmodProc(title,content,fileName,uid,name,num);
 	}
+	@Override //QNA 수정 파일 없을떄
+	public void QNAmodProc2(String title,String content,String uid,String name,String num) {
+		 qNADao.QNAmodProc2(title,content,uid,name,num);
+	}
 	@Override //QNA글 조회수 증가
 	public void QNAreadCnt(String num) {
 		qNADao.QNAreadCnt(num);
+	}
+	@Override //QNA 게시글 파일삭제
+	public void QNAfileDel(String filename,String num) {
+		qNADao.QNAfileDel(filename,num);
 	}
 	
 }

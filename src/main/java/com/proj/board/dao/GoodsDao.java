@@ -1,6 +1,7 @@
 package com.proj.board.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
@@ -16,5 +17,8 @@ public interface GoodsDao {
 	public void mtdDelete(String[] delIdx);
 
 	public Object cntChange(String num, String cnt);
+
+	// 상품 장바구니 등록 실행
+	public void goodsRegProc(Map<String, String> map);
 
 }

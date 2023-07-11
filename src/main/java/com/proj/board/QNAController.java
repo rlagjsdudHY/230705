@@ -186,7 +186,12 @@ public class QNAController {
 		}
 		System.out.println(fileName);
 		System.out.println(num);
-		qNAinf.QNAmodProc(title,content,fileName,uid,name,num);
+		if(!fileName.isEmpty()) {
+			qNAinf.QNAmodProc(title,content,fileName,uid,name,num);
+			
+		}else {
+			qNAinf.QNAmodProc2(title,content,uid,name,num);
+		}
 		
 		return "redirect:/QNA";
 	}
@@ -200,6 +205,17 @@ public class QNAController {
 			System.out.println(e.getMessage());
 		}
 		return "";
+	}
+	@RequestMapping("/filedel") //파일삭제
+	public void QNAfiledel(@RequestParam String filedel,@RequestParam String num,Model model,HttpServletRequest req) {
+//		String filedel = req.getParameter("filedel");
+		System.out.println("파일삭제 : "+filedel);
+		System.out.println("파일번호 : " + num);
+		try {
+			qNAinf.QNAfileDel(filedel,num);
+		} catch (Exception e) {
+			
+		}
 	}
 	
 	

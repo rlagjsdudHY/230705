@@ -54,10 +54,22 @@
     WHERE num = #{param6}
  	</update>
  	
+ 	<update id="QNAmodProc2"> <!-- QNA글 수정 파일수정없을떄 -->
+ 	 UPDATE QNABoard
+    SET title = #{param1},
+        content = #{param2},
+        uid = #{param3},
+        writer = #{param4}
+    WHERE num = #{param5}
+ 	</update>
  	
  	<update id="QNAreadCnt">  <!-- 조회수 증가 -->
  		update QNABoard set readcnt = readcnt +1 where num
 		= #{param1}
+ 	</update>
+ 	
+ 	<update id="QNAfileDel"> <!-- QNA게시글 파일삭제 -->
+ 		update QNABoard set filename = "" where num = #{param2}
  	</update>
  	
  </mapper>
