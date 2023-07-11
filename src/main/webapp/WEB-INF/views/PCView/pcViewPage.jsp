@@ -251,6 +251,7 @@
 				<div id="orderArea" class="opArea dFlex">
 					<span>주문 수량</span>
 					<div id="orderCnt">
+<<<<<<< HEAD
 						<select name="orderCnt" id="orderCnt" form="cartForm">
 							<option >1</option>
 							<option >2</option>
@@ -262,6 +263,19 @@
 							<option>8</option>
 							<option>9</option>
 							<option>10</option>
+=======
+						<select name="cnt" id="cnt">
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+							<option value="9">9</option>
+							<option value="10">10</option>
+>>>>>>> branch 'master' of https://github.com/rlagjsdudHY/230705.git
 						</select> <span>개</span>
 					</div>
 				</div>
