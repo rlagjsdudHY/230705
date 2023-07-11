@@ -14,6 +14,7 @@
 
 
 ![buy](https://github.com/rlagjsdudHY/230705/assets/131653393/e5dc0f51-0c69-4212-a451-0ea159e02064)
+![admin](https://github.com/rlagjsdudHY/230705/assets/131653393/ef1c4d29-f7b6-4618-b3bf-e7f135ac3256)
 ![cart](https://github.com/rlagjsdudHY/230705/assets/131653393/44013aae-825f-4909-9b04-5323dedda909)
 ![agreement](https://github.com/rlagjsdudHY/230705/assets/131653393/385fe817-4e05-4a71-a6cc-e88e76e6fe39)
 ![board](https://github.com/rlagjsdudHY/230705/assets/131653393/adead0dd-4d03-480e-a4a0-15676da98869)
