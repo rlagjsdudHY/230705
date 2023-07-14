@@ -23,7 +23,7 @@
 - https://drive.google.com/file/d/1sDCxbzDZNWhR-jZznPMEo9z0VcsuuFxl/view?usp=drive_link
 
 - 사용방법
- 1. WAR 파일을 다운로드 받고 다운로드 된 파일이 저장된 폴더의 주소창에 주소를 지우고 CMD를 입력하고 Enther 후 CMD창을 띄웁니다.
+ 1. WAR 파일을 다운로드 받고 다운로드 된 파일이 저장된 폴더의 주소창의 주소를 지우고 CMD를 입력하고 Enter 후 CMD창을 띄웁니다.
  2. java -jar ComputerSite-0.0.1-SNAPSHOT.war
     를 입력한 후 Enter. (입력 형식이 "java -jar 파일명이름확장자까지" 입니다. 파일명 변경이 없으시면 이대로 붙여넣기 하셔도 됩니다.)
  3. CMD창에서 스프링이 실행되고 Window 보안 경고 창이 나타납니다. 액세스를 허용하고 CMD창을 열어두고(닫으면 안됩니다) 브라우저를 실행합니다.
