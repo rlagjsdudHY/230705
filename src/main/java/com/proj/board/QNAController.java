@@ -1,8 +1,10 @@
 package com.proj.board;
 
 import java.io.File;
+import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,7 +59,7 @@ public class QNAController {
 	
 	@RequestMapping("/QNAwriteProc") // QNA 글쓰기 로직
 	public String noticeWriteProc(@RequestParam("fileName")  MultipartFile file, Model model,HttpServletRequest req) {
-		String SAVEFILE = "C:\\Users\\Computer\\Downloads\\AJR_20230126\\HY\\silsp\\p10_SpringBoot\\ComputerSite\\bin\\main\\static\\uploadDir";
+		String SAVEFILE = "C:\\Users\\Computer\\git\\gittext\\230705\\bin\\main\\static\\uploadDir";
 		String title = req.getParameter("title");
 		String content = req.getParameter("content");
 //		String uName = req.getParameter("uName");
@@ -69,7 +71,12 @@ public class QNAController {
 		System.out.println(content);
 //		System.out.println(uName);
 		
-		String name = pCDao.QNAmodUname(uid);
+		String name ="";
+		if(session.getAttribute("uidSession").equals("admin")) {
+		   name = pCDao.QNAmodAdminUname(uid);
+		} else {
+			name = pCDao.QNAmodUname(uid);
+		}
 		try {
 			fileName = file.getOriginalFilename();
 			File saveFile = new File(SAVEFILE, fileName);
@@ -84,6 +91,9 @@ public class QNAController {
 		
 		return "redirect:/QNA";
 	}
+
+	
+	
 	@RequestMapping("/QNAresult") // 글자세히보기
 	public String QNAresult(Model model, HttpServletRequest req) {
 		String num = req.getParameter("num");
@@ -160,7 +170,7 @@ public class QNAController {
 	
 	@RequestMapping("/QNAmodProc") //게시글 수정 로직
 	public String QNAmodProc(@RequestParam("fileName")  MultipartFile file,Model model, HttpServletRequest req) {
-		String SAVEFILE = "C:\\Users\\Computer\\Downloads\\AJR_20230126\\HY\\silsp\\p10_SpringBoot\\ComputerSite\\bin\\main\\static\\uploadDir";
+		String SAVEFILE = "C:\\Users\\Computer\\git\\gittext\\230705\\bin\\main\\static\\uploadDir";
 		String title = req.getParameter("title");
 		String content = req.getParameter("content");
 		String num = req.getParameter("num");

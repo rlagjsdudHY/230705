@@ -7,6 +7,7 @@ public class PCDetailDto {
 	
 	private int pcNum;
 	private String goodsName;
+	private String image;
 	private String monitor;
 	private String pcCpu;
 	private String cpuCooler;

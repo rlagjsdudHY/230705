@@ -23,7 +23,7 @@
 
 		<main id="main" class="dFlex">
 			<div id="GoodsImage">
-				<img alt="제품" src="images/TestImg.jpg"> <img alt="#"
+				<img alt="제품" src="${pcDetailDto.image}"> <img alt="#"
 					src="images/sampleImg.png">
 				<div id="ASArea">
 					<div id="a" class="dFlex">
@@ -298,8 +298,8 @@
 			</div>
 		</main>
 		
-		<input type="text" form="cartForm" value="${pcDetailDto.pcPrice}" name="SS">	
-		<input type="text" value="0" name="test" form="cartForm">
+		<input type="hidden" form="cartForm" value="${pcDetailDto.pcPrice}" name="SS">	
+		<input type="hidden" value="0" name="test" form="cartForm">
 		<!--  푸터템플릿 시작 -->
 		<%@ include file="/WEB-INF/views/ind/footerTmp.jsp"%>
 		<!--  푸터템플릿 끝 -->

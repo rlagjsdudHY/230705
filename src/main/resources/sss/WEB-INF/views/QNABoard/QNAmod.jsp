@@ -38,7 +38,13 @@
 				 <div></div>	
 				<div>제목 : <input type="text" name="title" value="${list.title }"></div>
 				<div>내용 : <textarea name="content">${list.content}</textarea></div>
-				<div><input type="file" name="fileName"></div>
+				<div><input type="file" name="fileName" value="${list.filename}">
+				<div style="margin-left:-460px">
+				<button type="submit" form="filedel" id="filedelBtn" data-value1="${list.filename}" data-value2="${list.num}">파일삭제</button>
+				<span id="filenamespan">${list.filename}</span>
+				<input type="hidden" value="${list.filename}" name="filedel" form="filedel">
+				</div> <!-- 파일삭제 div -->
+				</div>
 				</div>
 				
 				<div id="Qbutton">
@@ -49,7 +55,10 @@
 			 	<input type="hidden" value="${uName}" name="uName">
 				</form>
 				</c:forEach>
-			 
+			
+<!-- 				<form action="/filedel" id="filedel"></form>  -->
+				<!-- filedel파일삭제 form -->
+				
 <!-- 			footer 삽입 -->
 		</div>	
 		<!-- div#wrap -->
@@ -62,7 +71,33 @@
         			$("#QNAmodProc").submit();
         		});
         	});
-        	
+
+        	// 파일삭제함수
+    		 $(function(){
+        		 $("#filedelBtn").click(function(){
+        			 let filedel = $(this).data("value1");
+        			  let num = $(this).data("value2");
+        			 
+        				$.ajax({
+            				url : "/filedel",
+            				type : "POST",
+            				data : {
+            					  filedel : filedel,
+            					  num : num
+            				},
+            				success : function(response) {
+            					// 조회수 증가 성공 시 수행할 작업 (생략 가능)
+            				},
+            				error : function(xhr, status, error) {
+            					console.log("파일삭제 오류 발생: " + error);
+            				}
+            				
+            			});	
+        				alert("삭제되었습니다.");
+        				$("#filenamespan").hide();
+            		 });
+    		
+    		 });
         </script>	
 	</body>
 </html>

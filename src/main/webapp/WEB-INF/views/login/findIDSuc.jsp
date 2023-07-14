@@ -29,7 +29,7 @@
 					<span>아이디</span>
 					<span>${list.uid}</span>
 					<span>가입일</span>
-					<fmt:formatDate var="regTM" value="${list.regTM}" pattern="YYYY-MM-dd hh:mm"/>
+					<fmt:formatDate var="regTM" value="${list.regTM}" pattern="YYYY-MM-dd"/>
 					<span>${regTM}</span>
 				</div>
 				<hr>

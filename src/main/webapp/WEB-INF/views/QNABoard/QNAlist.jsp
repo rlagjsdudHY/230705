@@ -75,6 +75,12 @@ button {
 	text-align: center;
 	margin-top: 10px;
 }
+span#lock {
+	float:left;
+}
+.listRowQ:hover{
+	  background: silver;
+}
 </style>
 </head>
 <body>
@@ -98,7 +104,7 @@ button {
 						onclick="location.href='QNAresult?num=${list.num}'"
 						data-link="${list.num}">
 						<td>${list.num}</td>
-						<td>${list.title}</td>
+						<td><span id="lock">🔒</span>${list.title}</td>
 						<td>${list.writer}</td>
 						<td>${list.readcnt}</td>
 						 <td>

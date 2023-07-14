@@ -70,6 +70,9 @@
 .chat-option:hover {
 	background-color: #f2f2f2;
 }
+div.board div.post img {
+	/* border: 1px solid #000; */ width: 311px; height: 228px;
+}
 </style>
 </head>
 <body>
@@ -111,33 +114,16 @@
 				</div> -->
 
 
-		<div class="search">
-			<input type="text" placeholder="검색어를 입력해주세요.">
-			<button type="submit">
-				<img src="/images/search-icon.png" alt="검색">
-			</button>
-		</div>
-
 		<div id="container">
 			<div class="items">
-				<div class="item active">
+				<!--	<div class="item active">
 					<img src="/images/image1.jpg" alt="">
-				</div>
-				<div class="item">
-					<img src="/images/image2.jpg" alt="">
-				</div>
-				<div class="item">
-					<img src="/images/image3.jpg" alt="">
-				</div>
-				<div class="item">
-					<img src="/images/image4.jpg" alt="">
-				</div>
-				<div class="item">
-					<img src="/images/image5.jpg" alt="">
-				</div>
-				<div class="item">
-					<img src="/images/image6.jpg" alt="">
-				</div>
+				</div>	-->
+				<c:forEach var="list" items="${main}">
+					<div class="item">
+						<img src="${list.image}" alt="">
+					</div>
+				</c:forEach> 
 			</div>
 			<button class="prev">이전</button>
 			<button class="next">다음</button>
@@ -146,7 +132,7 @@
 		<div class="board">
 			<c:forEach var="list" items="${main}">
 				<div class="post" data-link="${list.pcNum}">
-					<img src="/images/image1.jpg" alt="이미지1">
+					<img src="${list.image}" alt="이미지1">
 					<h3>${list.goodsName}${list.pcNum}</h3>
 					<p>게시글 내용${list.pcNum}</p>
 				</div>

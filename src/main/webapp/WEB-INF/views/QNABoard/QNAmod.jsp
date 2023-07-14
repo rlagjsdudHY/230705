@@ -41,7 +41,7 @@
 				<div><input type="file" name="fileName" value="${list.filename}">
 				<div style="margin-left:-460px">
 				<button type="submit" form="filedel" id="filedelBtn" data-value1="${list.filename}" data-value2="${list.num}">파일삭제</button>
-				<span>${list.filename}</span>
+				<span id="filenamespan">${list.filename}</span>
 				<input type="hidden" value="${list.filename}" name="filedel" form="filedel">
 				</div> <!-- 파일삭제 div -->
 				</div>
@@ -72,7 +72,7 @@
         		});
         	});
 
-        	// 조회수 증가 함수
+        	// 파일삭제함수
     		 $(function(){
         		 $("#filedelBtn").click(function(){
         			 let filedel = $(this).data("value1");
@@ -91,8 +91,10 @@
             				error : function(xhr, status, error) {
             					console.log("파일삭제 오류 발생: " + error);
             				}
+            				
             			});	
-        			 
+        				alert("삭제되었습니다.");
+        				$("#filenamespan").hide();
             		 });
     		
     		 });

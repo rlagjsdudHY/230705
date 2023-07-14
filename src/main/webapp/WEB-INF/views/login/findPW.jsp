@@ -67,14 +67,7 @@
 			});
 			
 			$("button#findPWBtn").click(function(){
-<<<<<<< HEAD
 				let phoneRule = /^\d{3}-\d{4}-\d{4}$/;
-=======
-				
-				// 전화번호 형식
-				let phoneRule = /^\d{3}-\d{4}-\d{4}$/;
-				
->>>>>>> branch 'master' of https://github.com/rlagjsdudHY/230705.git
 				if ($("#uid").val() == null || $("#uid").val() == "") {
 					alert("아이디 입력해주세요.");
 					$("#uid").focus();

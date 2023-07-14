@@ -73,13 +73,13 @@
 		    		<!--  메인 LNB 템플릿 끝 -->    	
     			</div>
 				<div id="mainList">
-					
+					<form action="/goodsRegProc" id="goodsRegForm">
 						<div id="cartListArea">
 						<h1>장바구니</h1>
 						
 							<div class="listHeader listColumn dFlex">
 								<span><input type="checkbox" id="chkAll" class="chkDel"></span>
-								<span>상품명/옵션</span>
+								<span>상품명</span>
 								<span>제품가격</span>
 								<span>수량</span>
 								<span>주문금액</span>
@@ -88,20 +88,19 @@
 						
 							<c:set var="totalSum" value="0" />
 							<c:forEach var="order" items="${cartList}">
-							<div class="listRow listColumn dFlex" data-link="${order.num}" form="CartDel ">
+							<div class="listRow listColumn dFlex">
 								<span class="delIcon"><input type="checkbox" class="chkDel chkBox" value="${order.num}"></span>
 								<span>${order.goodsName}</span>
-								<fmt:formatNumber var="price" value="${order.price/order.cnt}" pattern="#,###원"/>
+								<fmt:formatNumber var="price" value="${order.price}" pattern="#,###원"/>
 								<span>${price}</span>
 								<span>
 								<input type="text" name="cnt" id="cntBox" maxlength="2"  value="${order.cnt}"><br>
 								<button type="submit" class="cntModBtn" value="${order.num }">변경</button>
 								</span>
 								
-								<fmt:formatNumber var="priceSum" value="${order.price}" pattern="#,###원"/>
+								<fmt:formatNumber var="priceSum" value="${order.price*order.cnt}" pattern="#,###원"/>
 								<span>${priceSum}</span>
-								<span><button id="directDeal">바로주문</button><br>
-								<button class="delete" form="CartDel">삭제</button></span>
+								<span><button id="directDeal">바로주문</button><br><button id="delete">삭제</button></span>
 							</div>
 							<c:set var="totalSum" value="${totalSum + order.price*order.cnt}" />
 							</c:forEach>
@@ -117,7 +116,7 @@
 							<fmt:formatNumber var="endPrice" value="${totalSum}" pattern="#,###원"/>
 							<span>${endPrice}</span>
 						</div>
-					<form action="/CartDel" id="CartDel"></form>
+					</form>
 					<div id="btnArea">
 		    			<button>선택 주문하기</button>
 		    			<button>전체 주문하기</button>
@@ -126,7 +125,7 @@
 	    	</main>
 	    	<!-- main#main -->
     		<form action="" id="modifyFrm" method="post"></form>
-	    	<form action="/listDel" id="chkDelForm"></form>
+	    	
 	    	<!--  푸터템플릿 시작 -->
 	    	<%@ include file="/WEB-INF/views/ind/footerTmp.jsp" %>
 	    	<!--  푸터템플릿 끝 --> 
@@ -166,7 +165,7 @@
 		});
 		
 		// 삭제 프로세스 시작
-		$("#delBtn").click(function(){	
+		$("#btnDel").click(function(){	
 		
 			let chkLen = $("span.delIcon>input.chkDel").length;
 			let trueCnt = 0;
@@ -185,19 +184,6 @@
 				}
 			}
 		});
-		
-		// 리스트 개별 삭제
-        $("button.delete").click(function(){
-           let chkToF = confirm("선택하신 상품을 장바구니에서 삭제하시겠습니까?");
-           if(chkToF) {
-              let num = $(this).parent("div").attr("data-link");
-              location.href="/CartDel?num="+num;
-              return false;
-           } else {
-              alert("취소하셨습니다.");
-              return false;
-           }
-        });
 		//선택 삭제, 일괄 삭제 끝
 		
 		 	// 수량 변경

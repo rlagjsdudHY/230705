@@ -89,7 +89,7 @@ public class GoodsController {
 	@RequestMapping("/listDel")
 	public String listDel(String[] delIdx) {
 		goodsInf.mtdDelete(delIdx);
-		
+		System.out.println("delIdx : "+delIdx);
 		return "redirect:cart";
 	}
 

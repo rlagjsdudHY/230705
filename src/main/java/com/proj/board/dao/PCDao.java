@@ -80,6 +80,9 @@ public interface PCDao {
 	
 	// 비밀번호 찾기 성공 페이지 이동
 	public List<PCDto> mtdFindPWSuc(String uid);
+	
+	// QNA 게시글 이름 반환 (어드민)
+	public String QNAmodAdminUname(String uid);
 
 
 }

@@ -154,5 +154,11 @@
 		select * from memList
 		where uid = #{param1}
 	</select>
-
+	
+	<!-- QNA게시글 수정 이름반환(어드민) -->
+	<select id="QNAmodAdminUname" resultType="String">
+		select uname from admin
+		where uid = #{param1}
+	</select>
+	
 </mapper>

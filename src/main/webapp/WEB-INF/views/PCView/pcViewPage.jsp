@@ -23,7 +23,7 @@
 
 		<main id="main" class="dFlex">
 			<div id="GoodsImage">
-				<img alt="제품" src="images/TestImg.jpg"> <img alt="#"
+				<img alt="제품" src="${pcDetailDto.image}"> <img alt="#"
 					src="images/sampleImg.png">
 				<div id="ASArea">
 					<div id="a" class="dFlex">
@@ -251,7 +251,6 @@
 				<div id="orderArea" class="opArea dFlex">
 					<span>주문 수량</span>
 					<div id="orderCnt">
-<<<<<<< HEAD
 						<select name="orderCnt" id="orderCnt" form="cartForm">
 							<option >1</option>
 							<option >2</option>
@@ -263,19 +262,6 @@
 							<option>8</option>
 							<option>9</option>
 							<option>10</option>
-=======
-						<select name="cnt" id="cnt">
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-							<option value="5">5</option>
-							<option value="6">6</option>
-							<option value="7">7</option>
-							<option value="8">8</option>
-							<option value="9">9</option>
-							<option value="10">10</option>
->>>>>>> branch 'master' of https://github.com/rlagjsdudHY/230705.git
 						</select> <span>개</span>
 					</div>
 				</div>
@@ -312,8 +298,8 @@
 			</div>
 		</main>
 		
-		<input type="text" form="cartForm" value="${pcDetailDto.pcPrice}" name="SS">	
-		<input type="text" value="0" name="test" form="cartForm">
+		<input type="hidden" form="cartForm" value="${pcDetailDto.pcPrice}" name="SS">	
+		<input type="hidden" value="0" name="test" form="cartForm">
 		<!--  푸터템플릿 시작 -->
 		<%@ include file="/WEB-INF/views/ind/footerTmp.jsp"%>
 		<!--  푸터템플릿 끝 -->

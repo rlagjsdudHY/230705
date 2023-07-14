@@ -79,7 +79,7 @@
 						
 							<div class="listHeader listColumn dFlex">
 								<span><input type="checkbox" id="chkAll" class="chkDel"></span>
-								<span>상품명/옵션</span>
+								<span>상품명</span>
 								<span>제품가격</span>
 								<span>수량</span>
 								<span>주문금액</span>
