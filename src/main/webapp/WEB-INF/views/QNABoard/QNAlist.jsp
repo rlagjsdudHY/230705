@@ -137,12 +137,12 @@ span#lock {
 						<strong>${i}</strong>
 					</c:when>
 					<c:otherwise>
-						<a href="?pageNum=${i}&pageSize=${pageSize}">${i}</a>
+						<a href="QNA?pageNum=${i}&pageSize=${pageSize}">${i}</a>
 					</c:otherwise>
 				</c:choose>
 			</c:forEach>
 			<c:if test="${pageNum < maxPage}">
-				<a href="?pageNum=${pageNum + 1}&pageSize=${pageSize}">다음
+				<a href="QNA?pageNum=${pageNum + 1}&pageSize=${pageSize}">다음
 					&raquo;</a>
 			</c:if>
 		</div>
